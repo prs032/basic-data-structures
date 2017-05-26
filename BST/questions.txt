@@ -1,0 +1,48 @@
+Q1. What are all the files that are created when I type 'make bst' for the first time?
+A1. bst (executable file), BSTInt.o, BSTNodeInt.o, testBST.o
+
+Q2. 
+A2. Following is the error message:
+
+    	BSTInt.cpp: In function ‘bool insert(int)’:
+	BSTInt.cpp:25:8: error: ‘root’ was not declared in this scope
+	   if (!root) {
+		^
+	BSTInt.cpp:27:7: error: ‘isize’ was not declared in this scope
+	     ++isize;
+	       ^
+	BSTInt.cpp:31:22: error: ‘root’ was not declared in this scope
+	   BSTNodeInt* curr = root;
+		              ^
+	BSTInt.cpp:56:5: error: ‘isize’ was not declared in this scope
+	   ++isize;
+	     ^
+	Makefile:29: recipe for target 'BSTInt.o' failed
+	make: *** [BSTInt.o] Error 1
+
+   When we remove the name scope from the method, we are removing the scope resolution functionality 
+   from the class, which confuses the compiler to connect the variables used in the function from 
+   their original declaration (which is made in the included header file). 
+   Therefore, the scope resolution operator is required to identify & specify the 
+   context to which a variable refers by specifying a namespace. 
+   Here, 'root' & 'isize' are variables declared in BstInt.h class, for which we 
+   need to specify the namespace BSTInt with scope resolution operator as 'BSTInt::'.
+
+Q3. In a sentence or two, describe the bug in the code. What function was it is, and what was it?
+A3. The bug in the code was with insert function of BST. The BST insert function shouldn't allow any
+	duplicate values in the tree. However, the current BST insert function was allowing the same.
+	
+Q4. In about a paragraph, describe the process you used to find and fix the bug. 
+	Include any tools you used and how you used them. If you were able to spot the 
+	bug by just looking at the code, describe your reasoning process in detail. 
+	We're not looking for the corrected code here (we already have that in your
+	.cpp file). Rather we're looking for a description of your debugging process. 
+	Please be specific.
+A4. I went through the code for insert & find method and tried to dry run the code for multiple inserts.
+	This helped me visualize the insertions and the way tree was being formed. I also debuggged the code
+	line by line, which helped me understand the flow more accurately. So I noticed that the insertion
+	was done only when we have left & right node for root and that left the tree insertions go bad.
+	So, what was happening is that the code was inserting the new nodes over the old ones, that too
+	when it was increasing the size of the tree correctly. This confused a lot initially, but I find it
+	finally. Apart from this, while correcting the code gdb helped a lot and helped me verifying the
+	segmentation fault errors. This ensured the correctness of my changes.
