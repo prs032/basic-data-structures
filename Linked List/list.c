@@ -1,16 +1,16 @@
 //==========================================================================
-// cs12xre                         Homework 5              Prashant Singh
+// 	                         Homework 5              Prashant Singh
 //--------------------------------------------------------------------------
 // File: list.c
 //
 // Description: Contains the Node & List structure and the member functions of
 //              the List class. The member function provides basic list data
-//				structure functionalities.
+//		structure functionalities.
 //
 // Debugger Questions: Using the debugger, insert three nodes into your list.
-// 					   List the values of the following pointers after the
-//					   three insertions:
-//1. front:			   0x605890
+// 		       List the values of the following pointers after the
+//		       three insertions:
+//1. front:		   0x605890
 //2. Node 1 data:	   0x605870
 //3. Node 1 pre:	   0x605950
 //4. Node 1 next:	   0x6058d0
